@@ -114,13 +114,27 @@ PRODUCT_PACKAGES += \
     vendor.qti.hardware.camera.device@1.0_vendor
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/camera/imx219_chromatix.xml:$(TARGET_COPY_OUT_VENDOR)/etc/camera/imx219_chromatix.xml \
-    $(LOCAL_PATH)/configs/camera/mot_imx258_bear_chromatix.xml:$(TARGET_COPY_OUT_VENDOR)/etc/camera/mot_imx258_bear_chromatix.xml \
-    $(LOCAL_PATH)/configs/camera/mot_imx258_mono_chromatix.xml:$(TARGET_COPY_OUT_VENDOR)/etc/camera/mot_imx258_mono_chromatix.xml \
-    $(LOCAL_PATH)/configs/camera/mot_s5k3l8_bear_chromatix.xml:$(TARGET_COPY_OUT_VENDOR)/etc/camera/mot_s5k3l8_bear_chromatix.xml \
-    $(LOCAL_PATH)/configs/camera/mot_s5k3l8_mono_chromatix.xml:$(TARGET_COPY_OUT_VENDOR)/etc/camera/mot_s5k3l8_mono_chromatix.xml \
-    $(LOCAL_PATH)/configs/camera/msm8953_mot_sanders_camera.xml:$(TARGET_COPY_OUT_VENDOR)/etc/camera/msm8953_mot_sanders_camera.xml \
-    $(LOCAL_PATH)/configs/camera/s5k4h8_chromatix.xml:$(TARGET_COPY_OUT_VENDOR)/etc/camera/s5k4h8_chromatix.xml
+    $(LOCAL_PATH)/configs/camera/imx219_chromatix.xml:system/etc/camera/imx219_chromatix.xml \
+    $(LOCAL_PATH)/configs/camera/mot_imx258_bear_chromatix.xml:system/etc/camera/mot_imx258_bear_chromatix.xml \
+    $(LOCAL_PATH)/configs/camera/mot_imx258_mono_chromatix.xml:system/etc/camera/mot_imx258_mono_chromatix.xml \
+    $(LOCAL_PATH)/configs/camera/mot_s5k3l8_bear_chromatix.xml:system/etc/camera/mot_s5k3l8_bear_chromatix.xml \
+    $(LOCAL_PATH)/configs/camera/mot_s5k3l8_mono_chromatix.xml:system/etc/camera/mot_s5k3l8_mono_chromatix.xml \
+    $(LOCAL_PATH)/configs/camera/msm8953_mot_sanders_camera.xml:system/etc/camera/msm8953_mot_sanders_camera.xml \
+    $(LOCAL_PATH)/configs/camera/s5k4h8_chromatix.xml:system/etc/camera/s5k4h8_chromatix.xml \
+    $(LOCAL_PATH)/configs/camera/vfwconfig.json:system/etc/camera/vfwconfig.json
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/gps/etc/flp.conf:system/vendor/etc/flp.conf \
+    $(LOCAL_PATH)/gps/etc/gps.conf:system/vendor/etc/gps.conf \
+    $(LOCAL_PATH)/gps/etc/izat.conf:system/vendor/etc/izat.conf \
+    $(LOCAL_PATH)/gps/etc/lowi.conf:system/vendor/etc/lowi.conf \
+    $(LOCAL_PATH)/gps/etc/sap.conf:system/vendor/etc/sap.conf \
+    $(LOCAL_PATH)/gps/etc/xtwifi.conf:system/vendor/etc/xtwifi.conf \
+    $(LOCAL_PATH)/gps/etc/cacert_location.pem:system/vendor/etc/cacert_location.pem
+
+# MotoActions
+PRODUCT_PACKAGES += \
+    MotoActions
 
 # Display
 PRODUCT_PACKAGES += \

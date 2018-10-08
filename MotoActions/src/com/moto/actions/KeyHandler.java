@@ -438,62 +438,11 @@ public class KeyHandler implements DeviceKeyHandler {
         return node;
     }
 
+<<<<<<< HEAD
     public KeyEvent handleKeyEvent(KeyEvent event) {
-        int scanCode = event.getScanCode();
-
-        if (DEBUG) {
-            Log.d(TAG, "DEBUG: action=" + event.getAction()
-                    + ", flags=" + event.getFlags()
-                    + ", keyCode=" + event.getKeyCode()
-                    + ", scanCode=" + event.getScanCode()
-                    + ", metaState=" + event.getMetaState()
-                    + ", repeatCount=" + event.getRepeatCount());
-        }
-
-        boolean isFPScanCode = ArrayUtils.contains(sSupportedFPGestures, scanCode);
-        if (!isFPScanCode) {
-            return event;
-        }
-
-        boolean isFPGestureEnabled = FileUtils.readOneLine(FP_HOME_NODE).equals("1");
-        boolean isFPGestureEnabledOnScreenOff = FileUtils.readOneLine(FP_HOME_OFF_NODE).equals("1");
-
-        boolean isScreenOn = mPowerManager.isScreenOn();
-
-        // We only want ACTION_UP event
-        if (event.getAction() != KeyEvent.ACTION_UP) {
-            return null;
-        }
-        
-        if (isFPScanCode){
-            if (fpGesturePending) {
-                return event;
-            } else {
-                resetFPGestureDelay();
-                fpGesturePending = true;
-                mHandler.postDelayed(fpGestureRunnable, 10);
-            }
-        }
-
-        if (scanCode != FP_TAP_SCANCODE) {
-            resetDoubleTapOnFP();
-        }
-
-        if (isFPScanCode) {
-            if ((!isFPGestureEnabled) || (!isScreenOn && !isFPGestureEnabledOnScreenOff)) {
-                resetDoubleTapOnFP();
-                return event;
-            }
-            if (!isScreenOn && isFPGestureEnabledOnScreenOff) {
-                processFPScreenOffScancode(scanCode);
-            } else {
-                processFPScancode(scanCode);
-            }
-        }
-        return null;
-    }
-
-    public boolean canHandleKeyEvent(KeyEvent event) {
+=======
+    public boolean handleKeyEvent(KeyEvent event) {
+>>>>>>> f4e2706... Revert "sanders: drop device keyhandler for now"
         int scanCode = event.getScanCode();
 
         if (DEBUG) {
@@ -509,24 +458,43 @@ public class KeyHandler implements DeviceKeyHandler {
         if (!isFPScanCode) {
             return false;
         }
+
+        boolean isFPGestureEnabled = FileUtils.readOneLine(FP_HOME_NODE).equals("1");
+        boolean isFPGestureEnabledOnScreenOff = FileUtils.readOneLine(FP_HOME_OFF_NODE).equals("1");
+
+        boolean isScreenOn = mPowerManager.isScreenOn();
+
+        // We only want ACTION_UP event
+        if (event.getAction() != KeyEvent.ACTION_UP) {
+            return true;
+        }
         
+        if (isFPScanCode){
+            if (fpGesturePending) {
+                return false;
+            } else {
+                resetFPGestureDelay();
+                fpGesturePending = true;
+                mHandler.postDelayed(fpGestureRunnable, 10);
+            }
+        }
+
+        if (scanCode != FP_TAP_SCANCODE) {
+            resetDoubleTapOnFP();
+        }
+
+        if (isFPScanCode) {
+            if ((!isFPGestureEnabled) || (!isScreenOn && !isFPGestureEnabledOnScreenOff)) {
+                resetDoubleTapOnFP();
+                return false;
+            }
+            if (!isScreenOn && isFPGestureEnabledOnScreenOff) {
+                processFPScreenOffScancode(scanCode);
+            } else {
+                processFPScancode(scanCode);
+            }
+        }
         return true;
-    }   
-
-    public boolean isCameraLaunchEvent(KeyEvent event) {
-        return false;
-    }
-
-    public boolean isWakeEvent(KeyEvent event){
-        return false;
-    }
-
-    public boolean isDisabledKeyEvent(KeyEvent event) {
-        return false;
-    }
-
-    public Intent isActivityLaunchEvent(KeyEvent event) {
-        return null;
     }
 
     private void processFPScancode(int scanCode) {

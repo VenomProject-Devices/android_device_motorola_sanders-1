@@ -14,4 +14,6 @@
 # limitations under the License.
 #
 
+add_lunch_combo liquid_sanders-eng
+add_lunch_combo liquid_sanders-user
 add_lunch_combo liquid_sanders-userdebug

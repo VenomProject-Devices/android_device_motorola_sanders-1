@@ -14,6 +14,12 @@
 # limitations under the License.
 #
 
+<<<<<<< HEAD
 add_lunch_combo liquid_sanders-eng
 add_lunch_combo liquid_sanders-user
 add_lunch_combo liquid_sanders-userdebug
+=======
+add_lunch_combo arrow_sanders-eng
+add_lunch_combo arrow_sanders-user
+add_lunch_combo arrow_sanders-userdebug
+>>>>>>> a77497e... Fix Keyhandler for Arrow and add more lunch combos

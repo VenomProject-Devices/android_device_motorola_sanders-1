@@ -1,12 +1,12 @@
 [
   {
-    "repository": chirayu19091997/android_vendor_motorola_sanders",
+    "repository": "chirayu19091997/android_vendor_motorola_sanders",
     "target_path": "vendor/motorola/sanders",
     "branch": "arrow-9.x"
   },
   {
-    "repository": chirayu19091997/android_kernel_motorola_msm8953",
+    "repository": "therootlord/android_kernel_motorola_msm8953",
     "target_path": "kernel/motorola/msm8953",
-    "branch": "arrow-9.x"
+    "branch": "rebase-new"
   }
 ]
